@@ -107,26 +107,6 @@ Remove o livro identificado pelo `id` da URL.
 - `204 No Content`: livro excluído (resposta sem corpo).
 - `404 Not Found`: não existe livro com o `id` informado (resposta sem corpo).
 
-### Exemplos com curl
-
-```bash
-# Cadastrar
-curl -X POST http://localhost:8080/livros \
-  -H "Content-Type: application/json" \
-  -d '{"titulo":"Dom Casmurro","autor":"Machado de Assis","anoPublicacao":1899}'
-
-# Listar
-curl http://localhost:8080/livros
-
-# Atualizar o livro de id 1
-curl -X PUT http://localhost:8080/livros/1 \
-  -H "Content-Type: application/json" \
-  -d '{"titulo":"Dom Casmurro","autor":"Machado de Assis","anoPublicacao":1900}'
-
-# Excluir o livro de id 1
-curl -X DELETE http://localhost:8080/livros/1
-```
-
 ## Decisões técnicas
 
 | Tecnologia | Por que foi escolhida |
@@ -163,9 +143,3 @@ Os testes em `LivroControllerTest` usam JUnit 5 e MockMvc e cobrem:
 
 Cada teste cadastra seus próprios dados, sem depender da ordem de execução.
 
-## Possíveis melhorias
-
-- Validação dos campos (título e autor obrigatórios) com Bean Validation, retornando `400`.
-- Rota `GET /livros/{id}` para consultar um livro específico.
-- Banco de dados persistente (PostgreSQL) com migrações (Flyway).
-- Paginação na listagem e documentação interativa com Swagger/OpenAPI.
